@@ -44,7 +44,7 @@ public class ELearningLogoutELTC_016 {
 	public void tearDown() throws Exception {
 		loginPOM.logoutMethod();
 		Thread.sleep(1000);
-		driver.quit();
+		driver.close();
 	}
 	
 	
