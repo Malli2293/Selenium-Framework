@@ -15,7 +15,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
 public class ELearningLogoutELTC_016 {
@@ -42,9 +44,10 @@ public class ELearningLogoutELTC_016 {
 	
 	@AfterMethod
 	public void tearDown() throws Exception {
-		loginPOM.logoutMethod();
+		
 		Thread.sleep(1000);
-		driver.close();
+		
+		//driver.close();
 	}
 	
 	
@@ -53,6 +56,10 @@ public class ELearningLogoutELTC_016 {
 		loginPOM.sendUserName("admin");
 		loginPOM.sendPassword("admin@123");
 		loginPOM.clickLoginBtn(); 
+		loginPOM.logoutMethod();
+		
+		boolean loginButton=driver.findElement(By.id("form-login_submitAuth")).isDisplayed();
+		Assert.assertTrue(loginButton);
 		
 	}
 }

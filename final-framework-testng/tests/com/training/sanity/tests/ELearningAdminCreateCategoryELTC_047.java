@@ -5,7 +5,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -42,7 +45,7 @@ public class ELearningAdminCreateCategoryELTC_047 {
 	@AfterClass
 	public void tearDown() throws Exception {
 		Thread.sleep(1000);
-		driver.close();
+		//driver.close();
 	}
 	
 	
@@ -52,8 +55,18 @@ public class ELearningAdminCreateCategoryELTC_047 {
 		loginPOM.sendPassword("admin@123");
 		loginPOM.clickLoginBtn(); 
 		loginPOM.createCategory("BL","Blended Learning");
-		loginPOM.createCourse("testing", "tes", "BLENDED LEARNING","manzoor", "Selenium", "selenium.hq");
+		loginPOM.createCourse("SQL", "2290", "BLENDED LEARNING","manzoor", "Selenium", "selenium.hq");
 		loginPOM.submitbutton();
+		
+		String course = driver.findElement(By.xpath("//*[@id=\"course-list\"]/tbody/tr[2]/td[2]")).getText();
+		driver.findElement(By.xpath("//*[@id=\"course-search-keyword\"]")).sendKeys("SQL");
+		driver.findElement(By.id("search_simple_submit")).click();
+		
+		String actual ="SQL";
+		Assert.assertEquals(actual,course);
+		
+		
+		
 		
 		
 	}

@@ -15,7 +15,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
 public class ELearningPasswordChangeELTC_018 {
@@ -43,7 +46,7 @@ public class ELearningPasswordChangeELTC_018 {
 	@AfterMethod
 	public void tearDown() throws Exception {
 		Thread.sleep(1000);
-		driver.close();
+		//driver.close();
 	}
 	
 	
@@ -53,6 +56,10 @@ public class ELearningPasswordChangeELTC_018 {
 		loginPOM.sendPassword("reva321");
 		loginPOM.clickLoginBtn(); 
 		loginPOM.passwordChange("reva321", "reva321", "reva321");
+		WebElement message = driver.findElement(By.xpath("//*[@id=\"cm-content\"]/div/div[2]/div/div[1]"));
+		String successPassword = message.getText();
+		String actual = "Your new profile has been saved";
+		Assert.assertEquals(actual,successPassword);
 		
 		
 	}

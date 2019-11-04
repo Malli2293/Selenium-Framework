@@ -12,9 +12,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 public class LoginPOMLearning {
-	private WebDriver driver;
+	public WebDriver driver;
 
 	public LoginPOMLearning(WebDriver driver) {
 		this.driver = driver; 
@@ -190,6 +191,9 @@ public class LoginPOMLearning {
 	
 	
 	
+	@FindBy(xpath="//*[@id=\"navbar\"]/ul[1]/li[7]/a")
+	private WebElement AdministrationExpected;
+	
 	
 	
 	
@@ -206,7 +210,8 @@ public class LoginPOMLearning {
 	}
 	
 	public void clickLoginBtn() {
-		this.loginBtn.click(); 
+		this.loginBtn.click();
+		
 	}
 	
 	public void logoutMethod()
@@ -310,8 +315,8 @@ public class LoginPOMLearning {
 		
 		driver.findElement(By.xpath("/html/body")).sendKeys("Hello just comment");
 		driver.switchTo().defaultContent();
-		
 		this.saveButton.click();
+	
 		
 	}
 	

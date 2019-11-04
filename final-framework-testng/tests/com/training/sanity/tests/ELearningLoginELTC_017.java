@@ -15,7 +15,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 
 public class ELearningLoginELTC_017 {
@@ -56,7 +58,8 @@ public class ELearningLoginELTC_017 {
 		loginPOM.sendUserName("admin");
 		loginPOM.sendPassword("admin@123");
 		loginPOM.clickLoginBtn(); 
-		
+		boolean view=driver.findElement(By.xpath("//*[@id=\"navbar\"]/ul[2]/li[2]/a/img")).isDisplayed();
+		Assert.assertTrue(view);
 	}
 }
 

@@ -44,7 +44,6 @@ public class ELearningAdminCreateUserELTC_048 {
 		driver.close();
 	}
 	
-
 	@Test
 	public void validLoginTest() {
 		loginPOM.sendUserName("admin");
